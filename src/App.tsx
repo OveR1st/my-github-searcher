@@ -1,12 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { Button } from 'antd';
+import './App.css'
 
-function App() {
+import RoutesContainer from './Router/Router';
+
+const App: React.FC = () => {
   return (
     <div className="App">
-      <div>HELLO</div>
+      <RoutesContainer />
+      {/* <Button type="primary">Button</Button> */}
     </div>
   );
 }
