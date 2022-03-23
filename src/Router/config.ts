@@ -1,5 +1,5 @@
 const HOMEPAGE = "/";
-const USERPAGE = "user/:name";
+const USERPAGE = "user/:login";
 
 export const Path = {
     HOMEPAGE,

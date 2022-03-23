@@ -1,7 +1,8 @@
-import { getAPI } from './../../services/PostService';
+import { IRepoInfo } from './../../models/IRepo';
+
 import { IUserShortInfo, IUserFullInfo } from './../../models/IUser';
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchUsers } from "./ActionCreators";
+import { createSelector, createSlice, PayloadAction, current } from "@reduxjs/toolkit";
+import { fetchRepo, fetchUser } from "./ActionCreators";
 
 interface IUsersState {
     users: IUserFullInfo[],
@@ -19,49 +20,59 @@ export const usersSlice = createSlice({
     name: 'User',
     initialState,
     reducers: {
-        setUser(state, action: PayloadAction<IUserFullInfo>) {
-            // state.count += action.payload
-            // const userShortInfo = {
-            //     avatar_url: action.payload.avatar_url,
-            //     name: action.payload.name,
-            //     public_repos: action.payload.public_repos
-            // }
-            // const { data: user, error, isLoading, refetch } = getAPI.useFetchUserQuery(action.payload); // get random users
+        setRepoUser(state, action: PayloadAction<{repo: IRepoInfo, userName: string}>) {
+            let copyStateUsers = current(state.users)
+            console.log('copy SSTATE', copyStateUsers);
+            let updateUser = copyStateUsers.find((user) => user.login === action.payload.userName) as IUserFullInfo
+            
+            // updateUser.repos = [
+            //     ...updateUser.repos,
+            //     action.payload.repo
+            // ] as IRepoInfo[]
+
+            let copyRepos = Object.assign(updateUser.repos, action.payload.repo);
+            
+            // copy.push(action.payload.repo)
+            // updateUser.repos.push(action.payload.repo)
+            updateUser.repos = copyRepos
             state.users = [
                 ...state.users,
-                action.payload
-            ]
+                updateUser
+            ] as IUserFullInfo[]
+           
         },
-
-        // usersFetching(state) {
-        //     state.isLoading = true
-        // },
-
-        // usersFetchingSuccess(state, { payload }: PayloadAction<IUser[]>) {
-        //     state.isLoading = false
-        //     state.error = ''
-        //     state.users = payload
-        // },
-        // usersFetchingError(state, { payload }: PayloadAction<IUser[]>) {
-        //     state.isLoading = false
-        //     state.error = 'Missing users'
-        //     state.users = payload
-        // },
     },
     extraReducers: {
-        [fetchUsers.pending.type]: (state) => {
+        [fetchUser.pending.type]: (state) => {
             state.isLoading = true
         },
-        [fetchUsers.fulfilled.type]: (state, { payload }: PayloadAction<IUserFullInfo[]>) => {
+        [fetchUser.fulfilled.type]: (state, { payload }: PayloadAction<IUserFullInfo>) => {
+            let updateUsers = {
+                id: payload.id,
+                email: payload.email,
+                location: payload.location,
+                public_repos: payload.public_repos,
+                repos_url: payload.repos_url,
+                name: payload.name,
+                login: payload.login,
+                avatar_url: payload.avatar_url,
+                followers: payload.followers,
+                following: payload.following,
+                created_at: payload.created_at,
+                repos: [] as IRepoInfo[]
+            } as IUserFullInfo
             state.isLoading = false
             state.error = ''
-            state.users = payload
+            state.users = [
+                ...state.users,
+                updateUsers
+            ]
         },
-        [fetchUsers.rejected.type]: (state, { payload }: PayloadAction<string>) => {
+        [fetchUser.rejected.type]: (state, { payload }: PayloadAction<string>) => {
             state.isLoading = false
             state.error = payload
         }
-    }
+    },
 
 })
 

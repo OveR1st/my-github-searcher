@@ -1,12 +1,12 @@
 import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit';
 import { getAPI } from './../services/PostService';
-// import counterReducer from '../features/counter/counterSlice';
-// import { postAPI } from "../services/PostService";
 
 import usersReducer from './reducers/UserSlice'
+import reposReducer from './reducers/RepoSlice'
 
 const rootReducer = combineReducers({
   usersReducer,
+  reposReducer,
   [getAPI.reducerPath]: getAPI.reducer
 })
 

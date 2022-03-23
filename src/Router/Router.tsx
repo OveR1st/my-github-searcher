@@ -4,7 +4,6 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Link
 } from "react-router-dom";
 
 import SearchPage from '../pages/SearchPage'
@@ -12,11 +11,7 @@ import UserPage from '../pages/UserPage'
  
 import { Path } from './config'
 
-interface Props {}
-
-const RoutesContainer: React.FC<Props> = () => {
- // const loadingData = useSelector(loadingStatusSelector)
-
+const RoutesContainer: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
