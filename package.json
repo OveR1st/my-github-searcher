@@ -2,6 +2,7 @@
   "name": "my-github-searcher",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://over1st.github.io/my-github-searcher",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -28,7 +29,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && gh-pages -d dist -b master"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -46,6 +48,7 @@
     ]
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.180"
+    "@types/lodash": "^4.14.180",
+    "gh-pages": "^3.2.3"
   }
 }
