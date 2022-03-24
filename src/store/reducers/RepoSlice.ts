@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchRepo } from "./ActionCreators";
 
 interface IReposState {
-    repos: IRepoInfo[],
+    repos: IRepoInfo[]
     isLoading: boolean,
     error: string
 }
@@ -18,40 +18,36 @@ export const reposSlice = createSlice({
     name: 'Repo',
     initialState,
     reducers: {
-        clearRepo(state) {
+        clearError(state) {
             state.error = ''
-            state.repos = []
-        },
+        }
     },
     extraReducers: {
+
         [fetchRepo.pending.type]: (state) => {
             state.isLoading = true
         },
+
         [fetchRepo.fulfilled.type]: (state, { payload }: PayloadAction<IRepoInfo>) => {
-            if(state.repos.find((el) => el.id === payload.id)) {
-                state.error = 'Search error'
+            if(state.repos.find((repo) => repo.name === payload.name)) {
+                state.isLoading = false
+                state.error = 'repo exists'
                 return
             }
-            const repo = {
-                id: payload.id,
-                name: payload.name,
-                stargazers_count: payload.stargazers_count,
-                forks_count: payload.forks_count,
-                html_url: payload.html_url
-            }
-    
             state.isLoading = false
             state.error = ''
             state.repos = [
                 ...state.repos,
-                repo
+                payload
             ]
                 
         },
+
         [fetchRepo.rejected.type]: (state, { payload }: PayloadAction<string>) => {
             state.isLoading = false
             state.error = 'Search error'
         }
+
     },
 })
    

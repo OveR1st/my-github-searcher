@@ -4,7 +4,7 @@ import { RootState } from './../store';
 
 export const usersShortInfoSelector = (state: RootState): IUserShortInfo[] => {
  return state.usersReducer.users.map((account) => {
-     return {
+    return {
         id: account.id,
         login: account.login,
         avatar_url: account.avatar_url,
@@ -14,10 +14,16 @@ export const usersShortInfoSelector = (state: RootState): IUserShortInfo[] => {
  })
 }
 
-   export const userProfileSelector = (state: RootState, login: string): IUserFullInfo => {
-     return state.usersReducer.users.find((user) => user.login === login) as IUserFullInfo
-   }
+export const userInfoSelector = (state: RootState, login: string): {userInfo: IUserFullInfo, userRepos: IRepoInfo[]} => {
+	const filterRepo = (rep: IRepoInfo) => {
+		return rep.owner === login
+	}
 
-   export const userRepoSelector = (state: RootState): IRepoInfo[] => {
-    return state.reposReducer.repos
-  }
+	const userInfo = state.usersReducer.users.find((user) => user.login === login) as IUserFullInfo
+	const userRepos = state.reposReducer.repos.filter(filterRepo)
+
+	return {
+		userInfo,
+		userRepos
+	}
+}

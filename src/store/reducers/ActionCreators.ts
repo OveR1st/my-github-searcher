@@ -16,7 +16,7 @@ export const fetchUser = createAsyncThunk(
             return response.data
         
         } catch (e) {
-            return thunkAPI.rejectWithValue("Не удалось загрузить пользователей")
+            return thunkAPI.rejectWithValue("Failed to load user")
         }
     }
 )
@@ -25,11 +25,20 @@ export const fetchRepo = createAsyncThunk(
     'repos/fetchRepo',
     async (data: {login: string , searchRepo: string}, thunkAPI) => {
         try {
-            const response = await axios.get<IRepoInfo>(`${api}repos/${data.login}/${data.searchRepo}`)
+            const response = await axios.get(`${api}repos/${data.login}/${data.searchRepo}`)
 
-            return response.data
+            const newRepo = {
+                id: response.data.id,
+                name: response.data.name,
+                stargazers_count: response.data.stargazers_count,
+                forks_count: response.data.forks_count,
+                html_url: response.data.html_url,
+                owner:  response.data.owner.login
+            }
+
+            return newRepo
         } catch (e) {
-            return thunkAPI.rejectWithValue("error")
+            return thunkAPI.rejectWithValue("Failed to load repo")
         } 
     }
 )

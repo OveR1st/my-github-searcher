@@ -1,4 +1,4 @@
-.root {
+.userPage {
     position: relative;
     width: 40em;
     height: 40em;
@@ -8,6 +8,16 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 30px;
+
+    &_header {
+        text-align: center;
+        font-size: 1.8em;
+    }
+
+    &_error {
+        color: red;
+        height: 30px;
+    }
 
     .btn {
         position: absolute;

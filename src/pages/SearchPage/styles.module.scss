@@ -1,4 +1,4 @@
-.root {
+.wrapper {
     width: 40em;
     height: 40em;
     background-color: aquamarine;
@@ -7,4 +7,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 30px;
+
+    &_header {
+        text-align: center;
+        font-size: 1.8em;
+    }
 }

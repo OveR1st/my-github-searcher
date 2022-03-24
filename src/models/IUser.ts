@@ -13,8 +13,7 @@ export interface IUserFullInfo {
     avatar_url: string,
     followers: number,
     following: number,
-    created_at: string,
-    repos: IRepoInfo[]
+    created_at: string
 }
 
 export type IUserShortInfo = Pick<IUserFullInfo, 'avatar_url' | 'login' | 'name' | 'public_repos' | 'id' >;

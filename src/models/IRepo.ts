@@ -1,10 +1,11 @@
 /**
  * Repo Interface
  */
- export interface IRepoInfo {
+export interface IRepoInfo {
     id: number,
     name: string,
     stargazers_count: number,
     forks_count: number,
-    html_url: string
+    html_url: string,
+    owner: string
 }

@@ -1,6 +1,9 @@
+import clsx from 'clsx'
 import React from 'react'
 import { IRepoInfo } from '../../models/IRepo'
 import RepoItem from './RepoItem'
+
+import s from './styles.module.scss'
 
 interface IProps {
     userRepos: IRepoInfo[]
@@ -8,11 +11,7 @@ interface IProps {
 
 const RepoInfoList:React.FC<IProps> = ({ userRepos }) => {
     return(
-        <div style={{
-            maxHeight: '15em',
-            overflow: 'auto',
-            marginTop: '20px',
-        }}>
+        <div className={clsx(s.repoWrapper)}>
             {userRepos.map((repo) => <RepoItem key={repo.id} repo={repo}/>)}
         </div>
     )

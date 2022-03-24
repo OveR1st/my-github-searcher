@@ -1,54 +1,58 @@
 {
-  "name": "my-github-searcher",
-  "version": "0.1.0",
-  "private": true,
-  "homepage": "https://over1st.github.io/",
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.8.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/jest": "^24.9.1",
-    "@types/node": "^12.20.47",
-    "@types/react": "^16.14.24",
-    "@types/react-dom": "^16.9.14",
-    "@types/react-redux": "^7.1.23",
-    "antd": "^4.19.3",
-    "axios": "^0.26.1",
-    "clsx": "^1.1.1",
-    "lodash": "^4.17.21",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-redux": "^7.2.6",
-    "react-router-dom": "^6.2.2",
-    "react-scripts": "5.0.0",
-    "sass": "^1.49.9",
-    "typescript": "~4.1.5"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@types/lodash": "^4.14.180",
-    "gh-pages": "^3.2.3"
-  }
+  	"name": "my-github-searcher",
+  	"version": "0.1.0",
+  	"private": true,
+  	"homepage": "https://over1st.github.io/",
+  	"dependencies": {
+    	"@reduxjs/toolkit": "^1.8.0",
+    	"@testing-library/jest-dom": "^4.2.4",
+    	"@testing-library/react": "^9.5.0",
+    	"@testing-library/user-event": "^7.2.1",
+    	"@types/jest": "^24.9.1",
+    	"@types/node": "^12.20.47",
+    	"@types/react": "^16.14.24",
+    	"@types/react-dom": "^16.9.14",
+    	"@types/react-redux": "^7.1.23",
+    	"antd": "^4.19.3",
+    	"axios": "^0.26.1",
+    	"clsx": "^1.1.1",
+    	"lodash.debounce": "^4.0.8",
+    	"react": "^17.0.2",
+    	"react-dom": "^17.0.2",
+    	"react-redux": "^7.2.6",
+    	"react-router-dom": "^6.2.2",
+    	"react-scripts": "5.0.0",
+    	"sass": "^1.49.9",
+    	"typescript": "~4.1.5"
+  	},
+  	"scripts": {
+    	"start": "react-scripts start",
+    	"build": "react-scripts build",
+    	"test": "react-scripts test",
+    	"eject": "react-scripts eject",
+    	"deploy": "gh-pages -d build"
+  	},
+
+  	"eslintConfig": {
+    	"extends": "react-app"
+  	},
+
+  	"browserslist": {
+    	"production": [
+      		">0.2%",
+      		"not dead",
+      		"not op_mini all"
+   	 	],
+
+    	"development": [
+      		"last 1 chrome version",
+      		"last 1 firefox version",
+      		"last 1 safari version"
+   		]
+  	},
+
+  	"devDependencies": {
+    	"@types/lodash.debounce": "^4.0.6",
+    	"gh-pages": "^3.2.3"
+  	}
 }
